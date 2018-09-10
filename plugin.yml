@@ -1,0 +1,15 @@
+name: EkonomiTR
+version: 1.0
+main: NightWish_TR\Ekonomi\Ekonomi
+author: NightWish_TR
+api: 4.0.0
+
+commands:
+  param:
+    description: Paranı görürsün!
+  paraver:
+    description: Bir oyuncuya para verir!
+  parakes:
+    description: Bir oyuncudan para keser!
+  parabak:
+    description: Bir oyuncunun parasına bakar!
