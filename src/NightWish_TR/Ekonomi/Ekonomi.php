@@ -15,6 +15,16 @@ class Ekonomi extends PluginBase{
 
     /** @var Config */
     public $d;
+    /** @var Ekonomi */
+    private static $instance = null;
+    
+    public function onLoad(){
+        self::$instance = $this;
+    }
+
+    public static function getAPI(): ?Ekonomi{
+        return self::$instance;
+    }
 
 	public function onEnable(){
 		@mkdir($this->getDataFolder());
@@ -72,7 +82,7 @@ class Ekonomi extends PluginBase{
 		}
 
 		if(strtolower($kmt->getName()) == "parabak"){
-			if(!(empty($args[0]))){
+			if(isset($args[0])){
 				$this->seeMoney($this->getServer()->getPlayer($args[0]), $g);
 			}else{
 				$g->sendMessage("§cKullanım: §7/parabak <oyuncu>");
@@ -81,7 +91,7 @@ class Ekonomi extends PluginBase{
 		return true;
 	}
 
-       /*>>>>>>>>>>>>>>>>>>>>>>>>>> Events <<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+       /*>>>>>>>>>>>>>>>>>>>>>>>>>> API <<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 	public function myMoney(Player $g){
 		$para = $this->d->get($g->getName());
